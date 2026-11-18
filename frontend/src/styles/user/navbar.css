@@ -1,0 +1,563 @@
+/* -------------------------------------------------------*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* top, bottom хоёр мөрөнд */
+  background-color: white;
+  box-shadow: none;
+  z-index: 100;
+}
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; 
+  background: linear-gradient(90deg, #4f46e5, #60a5fa);
+  border-radius: 3px;
+}
+
+/* --------------------- TOP --------------------- */
+.navbar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 10px 40px;
+}
+
+/* Зүүн тал — Logo, Hamburger, Search */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 100px;
+}
+
+.navbar-logo img {
+  width: 200px;
+  height: 200px;
+}
+
+.navbar-logo h1 {
+  color: limegreen;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hamburger-wrap {
+  position: relative;     
+  display: inline-flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.hamburger {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 80px;
+  font-size: 22px;
+  color: #222;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hamburger:hover {
+  transform: scale(0.95);
+  background-color: #d6d6d6;
+}
+
+.hamburger:active {
+  transform: scale(0.9);
+  background-color: #d6d6d6;
+}
+
+.hamburger i {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hamburger.open i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown цэс */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;   
+  left: 80%;               
+  transform: translateX(-50%);
+  min-width: 200px;
+  background: rgb(93, 93, 93);
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  padding: 8px 0;
+  z-index: 1000;          
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -6px; left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent; 
+}
+
+/* Линкүүд */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: #fefefe;
+  text-decoration: none;  
+}
+.dropdown-menu a:hover {
+  color: #ffffff;
+  background-color: #767676;
+}
+
+
+
+/* Хайлт хэсэг */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #eeeeee;
+  border-radius: 25px;
+  padding: 6px 12px;
+  width: 500px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1000;
+}
+
+.search-box:hover {
+  background-color: #dedddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  border: 1.5px solid #d1d5db;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  flex: 1;
+}
+
+.search-box button {
+  border: none;
+  background: none;
+  color: #777;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.search-results {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 1200;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.search-result-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.search-result-item:hover {
+  background: #eef2ff;
+  transform: translateY(-1px);
+}
+
+.search-result-name {
+  font-size: 14px;
+  color: #111827;
+  text-align: left;
+}
+
+.search-result-price {
+  font-size: 13px;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.search-result-placeholder {
+  margin: 0;
+  padding: 8px 10px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: 70px;
+}
+
+.navbar-right button {
+  border: none;
+  background: #f7f7f7;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover үед гялалзсан эффект */
+.navbar-right button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Тус бүрийн өнгө */
+.navbar-right button:nth-child(1) i {
+  color: #ff4d6d; /* Heart — ягаан/улаан */
+}
+
+.navbar-right button:nth-child(2) i {
+  color: #007bff; /* Cart — цэнхэр */
+}
+
+.navbar-right button:nth-child(3) i {
+  color: #555; /* User — саарал */
+}
+
+/* Hover үед өнгө тодорно */
+.navbar-right button:nth-child(1):hover i {
+  color: #e60050;
+}
+
+.navbar-right button:nth-child(2):hover i {
+  color: #0056b3;
+}
+
+.navbar-right button:nth-child(3):hover i {
+  color: #222;
+}
+
+/* --------------------- BOTTOM --------------------- */
+.navbar-bottom {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 40px;
+  margin-left: 100px;
+  background-color: #f9f9f9;
+}
+
+.navbar-bottom a {
+  text-decoration: none;
+  color: #616161;
+  font-size: 15px;
+  transition: 0.1s;
+  padding-bottom: 3px;
+}
+
+.navbar-bottom a:hover {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+/* идэвхтэй товч */
+.navbar-bottom a.active {
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+
+
+/*================= footer css ===========================*/
+
+.footer {
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  color: #444;
+  margin-top: 80px;
+  padding: 25px 0 15px 0;
+}
+
+/* Линкүүд хэсэг */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 250px;
+  position: relative;
+  padding-top: 30px;
+}
+
+/* Зураас — зөвхөн линкүүдийн доор */
+.footer-links::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%; 
+  height: 2px;
+  background-color: #ddd;
+}
+
+/* Линкүүд */
+.footer-links a {
+  display: inline-block;
+  width: 140px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #555;
+  border-bottom: 1px solid #555;
+}
+
+/* Доод бичиг */
+.footer-copy {
+  font-size: 13px;
+  color: #777;
+  margin-top: 10px;
+}
+
+
+
+/* ================= sidebar css ===================== */
+.breadcrumb {
+  position: sticky;         
+  top: 140px;                
+  z-index: 90;              
+  background: #fff;          
+  padding: 10px 60px;       
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03); 
+}
+
+/* Bread link style */
+.breadcrumb a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  opacity: 0.6;
+}
+
+.breadcrumb a:hover {
+  color: #6a63e0;
+  opacity: 0.8;
+}
+
+/* Хоорондын зураас */
+.breadcrumb .separator {
+  margin: 0 8px;
+  color: #bbb;
+}
+
+/* Сүүлчийн хэсэг */
+.breadcrumb .active {
+  color: #4f46e5;
+  font-weight: 600;
+  opacity: 0.6;
+
+}
+
+.breadcrumb-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;              /* фон байхгүй */
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 10px;
+  cursor: pointer;
+  color: #4b5563;                /* анхны саарал өнгө */
+  transition: all 0.25s ease;
+}
+
+/* hover үед зөөлөн өнгө солигдоно */
+.breadcrumb-back-btn:hover {
+  color: #2563eb;     
+  border-color: #2563eb;         
+  transform: translateY(-2px);
+}
+
+.breadcrumb-back-btn i {
+  font-size: 12px;
+  color: red;
+  font-weight: 600;
+}
+
+/* Responsive бага дэлгэцэнд padding багасгах */
+@media (max-width: 768px) {
+  .breadcrumb {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+
+/* Бүх toast-уудын өнгө, фонт */
+.Toastify__toast {
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #f3f4f6; /* ✅ сул саарал */
+  color: #374151;       /* ✅ зөөлөн хар */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Success toast */
+.Toastify__toast--success {
+  background: #ecfdf5; /* ✅ сул ногоон */
+  color: #065f46;
+}
+
+/* Error toast */
+.Toastify__toast--error {
+  background: #fef2f2; /* ✅ сул улаан */
+  color: #991b1b;
+}
+
+/* Info toast */
+.Toastify__toast--info {
+  background: #eff6ff; /* ✅ сул цэнхэр */
+  color: #1e3a8a;
+}
+
+/* Warning toast */
+.Toastify__toast--warning {
+  background: #fff7ed; /* ✅ сул шаргал */
+  color: #92400e;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 1024px) {
+  .navbar-top {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 20px;
+    gap: 12px;
+  }
+
+  .navbar-left {
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .navbar-logo {
+    margin-left: 0;
+  }
+
+  .navbar-logo img {
+    width: 140px;
+    height: auto;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .navbar-right {
+    margin-right: 0;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .navbar-top {
+    padding: 12px 14px;
+  }
+
+  .hamburger {
+    margin-left: 0;
+  }
+
+  .search-box {
+    order: 3;
+    width: 100%;
+  }
+
+  .navbar-right button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .navbar-bottom {
+    gap: 10px;
+    padding: 10px 14px;
+    margin-left: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .navbar-bottom button,
+  .navbar-bottom a {
+    font-size: 13px;
+  }
+
+  .banner {
+    height: 220px;
+  }
+}

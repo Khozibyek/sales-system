@@ -1,0 +1,463 @@
+.admin-products-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Products page доторх хүснэгт scroll */
+.admin-products-page .users-table-wrapper {
+  max-width: 100%;
+  max-height: 65vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  /* 💄 Жаахан card маягийн дизайн нэмэв */
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 18px 30px rgba(31, 42, 64, 0.08);
+  padding: 24px;
+}
+
+/* 🧾 Барааны жагсаалтын хүснэгт – ээлжилсэн цагаан/саарал мөр, hover */
+.admin-products-page .users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.admin-products-page .users-table thead th {
+  text-align: left;
+  padding: 12px 16px;
+  background: #f1f5f9;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Zebra rows */
+.admin-products-page .users-table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.admin-products-page .users-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Hover үед тодруулах */
+.admin-products-page .users-table tbody tr:hover {
+  background: #e5edff;
+  transition: background 0.15s ease;
+}
+
+.admin-products-page .users-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  vertical-align: middle;
+}
+
+/* Product edit layout */
+.product-edit-layout {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: flex-start;
+}
+
+.users-form.compact {
+  gap: 20px;
+}
+
+.product-edit-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+  align-items: start;
+}
+
+.product-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 18px 30px rgba(31, 42, 64, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1f2937;
+}
+
+.product-card-main {
+  grid-column: 1 / 2;
+  max-height: 78vh;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+.product-card-main::-webkit-scrollbar,
+.product-card-specs::-webkit-scrollbar {
+  width: 6px;
+}
+
+.product-card-main::-webkit-scrollbar-thumb,
+.product-card-specs::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.product-card-main::-webkit-scrollbar-thumb:hover,
+.product-card-specs::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.product-card-specs {
+  grid-column: 2 / 3;
+  max-height: 78vh;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+.product-card-images {
+  grid-column: 1 / -1;
+}
+
+.product-card-images textarea {
+  min-height: 180px;
+}
+
+.product-images-edit ul {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.product-primary-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-main-left {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.product-main-left.single-column {
+  grid-template-columns: 1fr;
+}
+
+.product-main-left label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Images edit box */
+.product-images-edit {
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5f5;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.image-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.image-actions h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+
+.image-add-btn {
+  padding: 6px 12px;
+}
+
+.images-textarea-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.images-textarea-label textarea {
+  min-height: 160px;
+}
+
+.images-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.images-preview-item {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+  transition: all 0.2s ease;
+}
+
+.images-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ❌ Зураг устгах товч */
+.delete-image-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #dc2626;
+  border: none;
+  font-size: 18px;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.delete-image-btn:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+/* 🟢 Add image button */
+.add-image-btn {
+  cursor: pointer;
+  border: 2px dashed #cbd5e1;
+  background: #f9fafb;
+  color: #9ca3af;
+  transition: all 0.25s ease;
+}
+
+.add-image-btn:hover {
+  border-color: #4f46e5;
+  color: #4f46e5;
+  background: #f3f4f6;
+}
+
+.add-image-btn input {
+  display: none;
+}
+
+.add-icon {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.images-empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 220px;
+}
+
+.images-empty-state .specs-placeholder {
+  text-align: left;
+}
+
+/* Specs edit */
+.product-card-specs .specs-panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-card-specs .specs-panel-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.product-card-specs .specs-panel-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.product-specs-edit-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 100%;
+}
+
+.product-specs-edit-table th,
+.product-specs-edit-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+.product-specs-edit-table th {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  background: #f9fafb;
+  width: 35%;
+}
+
+.product-specs-edit-table td select,
+.product-specs-edit-table td input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.product-specs-edit-table td select:focus,
+.product-specs-edit-table td input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.product-specs-edit-table tr:last-child th,
+.product-specs-edit-table tr:last-child td {
+  border-bottom: none;
+}
+
+.product-specs-edit-table td:last-child {
+  width: 80px;
+  text-align: right;
+}
+
+.spec-remove-btn {
+  border: none;
+  background: none;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 4px 0;
+}
+
+.spec-remove-btn:hover {
+  text-decoration: underline;
+}
+
+.spec-add-btn {
+  align-self: flex-start;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spec-add-btn svg {
+  font-size: 1rem;
+}
+
+.spec-add-btn:hover {
+  background: #1d4ed8;
+}
+
+.spec-add-btn:disabled,
+.spec-add-btn:disabled:hover {
+  background: #cbd5f5;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.specs-empty-row {
+  text-align: center;
+  padding: 18px 12px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Status toggle */
+.status-toggle {
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.status-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.status-active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #047857;
+}
+
+.status-inactive {
+  background: rgba(248, 113, 113, 0.15);
+  color: #b91c1c;
+}
+
+.status-toggle:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .product-edit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-primary-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-main,
+  .product-card-specs,
+  .product-card-images {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-card-title {
+    font-size: 1rem;
+  }
+
+  .product-images-edit ul {
+    padding-left: 16px;
+  }
+}

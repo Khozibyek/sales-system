@@ -1,0 +1,514 @@
+/*================ product detile styles ==================*/
+.product-detail-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  font-family: "Inter", sans-serif;
+}
+.product-header-top {
+  text-align: left;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.product-title-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.product-title-line.wide {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+/* --- Барааны нэр --- */
+.product-title-top {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+
+.product-brand-badge.float-right {
+  font-size: 14px;
+  color: #aeaeae;
+  border: 1px solid #aeaeae;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #f9fafb;
+  white-space: nowrap;
+}
+
+
+.product-code-top {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.product-detail {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* === ЗҮҮН ХЭСЭГ=== */
+.product-left {
+  flex: 1;
+  max-height: 80vh; /* дэлгэцийн 80% өндрийг эзэлнэ */
+  overflow-y: auto; /* дотроо гүйлгэгдэх */
+  padding-right: 10px;
+  scroll-behavior: smooth;
+}
+
+/* scrollbar дизайн */
+.product-left::-webkit-scrollbar {
+  width: 6px;
+}
+.product-left::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+.product-left::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 8px;
+}
+.product-left::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}
+
+
+/* --- Зураг хэсэг --- */
+.product-gallery {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;   
+}
+
+.thumbnail-list {
+  width: 96px;               /* тогтмол өргөн (90px + дотор зай) */
+  max-height: 320px;         /* main image-тэй таарна */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f9fafb;
+}
+.thumbnail-list::-webkit-scrollbar { width: 6px; }
+.thumbnail-list::-webkit-scrollbar-track { background: #f9fafb; border-radius: 8px; }
+.thumbnail-list::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 8px; }
+.thumbnail-list::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Thumbnail зураг — квадрат, тогтмол */
+.thumbnail-list img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;     /* жижиг зураг тэгш бөглөнө */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.2s;
+  display: block;
+}
+.thumbnail-list img:hover { border-color: #4f46e5; }
+.thumbnail-list img.active {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px #e0e7ff inset;
+}
+
+/* Main зураг талбай */
+.main-image {
+  flex: 1;
+  min-width: 0;
+  max-width: 500px;
+  max-height: 400px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease; 
+}
+
+.main-image:hover img {
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+  .product-gallery { flex-direction: column; }
+  .thumbnail-list {
+    width: 100%;
+    max-height: none;
+    overflow-y: hidden;
+    overflow-x: auto;
+    flex-direction: row;
+    padding-bottom: 6px;
+  }
+  .thumbnail-list img { width: 72px; height: 72px; }
+  .main-image img { max-width: 100%; max-height: 300px; }
+}
+@media (max-width: 992px) {
+  .product-detail {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .product-left {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .product-info {
+    width: 100%;
+    padding: 0;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-detail-container {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  .product-title-top {
+    font-size: 18px;
+  }
+
+  .product-detail {
+    gap: 20px;
+  }
+
+  .product-info {
+    padding: 0 4px;
+  }
+
+  .quantity-section {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .action-buttons {
+    gap: 10px;
+  }
+}
+
+/* ====  Бүтээгдэхүүний үзүүлэлт ==== */
+.product-specs {
+  margin-top: 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+/* Толгой хэсэг */
+.product-specs h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Жагсаалт */
+.product-specs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Мөр бүрийн хэв загвар */
+.product-specs li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.3s ease;
+}
+
+/* 🟢 Ээлжлэн өнгө */
+.product-specs li:nth-child(odd) {
+  background-color: #ffffff !important; /* цагаан */
+}
+
+.product-specs li:nth-child(even) {
+  background-color: #f9fafb !important; /* зөөлөн саарал */
+}
+
+/* Hover эффект (нэмэлт гоёл) */
+.product-specs li:hover {
+  background-color: #eef2ff;
+}
+
+/* Түлхүүр нэр */
+.product-specs li strong {
+  font-weight: 600;
+  color: #374151;
+  min-width: 140px;
+}
+
+/* Сүүлийн мөрөнд доод хүрээ байхгүй */
+.product-specs li:last-child {
+  border-bottom: none;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .product-specs li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+  }
+  .product-specs li strong {
+    margin-bottom: 4px;
+  }
+}
+
+
+/* --- Баруун хэсэг --- */
+.product-info {
+  flex: 1;
+  position: relative;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Хадгалах товч */
+.product-detail .save-btnn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: 2px solid #9ca3af;   /* Саарал хүрээ */
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;              /* Саарал icon */
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-detail .save-btnn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(239, 68, 68, 0.2);
+  transform: scale(1.1);
+}
+
+.save-btnn.active {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+  animation: heartPulse 0.4s ease;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1.1); }
+}
+
+
+
+/* Үнэ хэсэг spacing нэмсэн */
+.price-pair-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 50px;  /* ⬇️ хадгалах товчноос зай авна */
+}
+
+.price-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.price-value-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.discounted-price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333; /* ногоон */
+}
+.discount-percent-badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 0 15px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.original-price {
+  font-size: 20px;
+  color: #9ca3af;
+  /* text-decoration: line-through; */
+}
+
+/* Хэмнэлт */
+.saving-line {
+  font-size: 14px;
+  color: #555;
+  margin-top: 6px;
+}
+
+.saving-line span {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+/* 🔢 Тоо ширхэг + үлдэгдэл */
+.quantity-section {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  margin-top: 25px;
+}
+
+.quantity-box {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 6px 10px;
+  gap: 8px;
+  background: #fff;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.qty-btn:hover {
+  color: #4f46e5;
+  transform: scale(0.95);
+}
+
+.qty-value {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Үлдэгдэл */
+.stock-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin-left: 15px;
+}
+.stock-text span {
+  color: #111;
+  font-weight: 600;
+}
+
+/* === Дууссан badge === */
+.out-of-stock-badge {
+  margin-top: 30px;
+  display: inline-block;
+  background: #aeaeae;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-align: center;
+  width: fit-content;
+  align-self: flex-start;
+  letter-spacing: 0.3px;
+}
+
+/*  Үйлдлийн товчлуурууд */
+.action-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.cart-btn,
+.buy-btn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+/* Сагсанд */
+.cart-btn {
+  background: #fff;
+  color: #4f46e5;
+  border-color: #4f46e5;
+}
+.cart-btn:hover {
+  background: #4f46e5;
+  color: #fff;
+}
+
+/* Худалдан авах */
+.buy-btn {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+.buy-btn:hover {
+  background: #dc2626;
+}
+
+.cart-btn.disabled,
+.buy-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

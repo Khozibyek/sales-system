@@ -1,0 +1,223 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  /* margin-top: 100px; */
+}
+
+.login-box {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 40px 50px;
+  width: 500px;
+  text-align: left;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #333;
+  font-size: 20px;
+}
+
+.login-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #444;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-options .remember {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  line-height: 1; /* босоо төвшинг илүү жигд болгоно */
+}
+
+.login-options .remember input {
+  width: 16px;
+  height: 16px;
+  margin-top: 0; /* default хэлтгэхийг арилгана */
+  accent-color: #007bff; /* checkbox-ийн өнгө */
+  position: relative;
+  top: 0.5px; /* бага зэрэг төвд ойртуулна */
+}
+
+.login-options .remember p{
+    text-decoration: none;
+    margin: 0 3px 13px;
+
+}
+
+
+.login-options .forgot-password {
+  color: #007bff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.login-btn {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #0069d9;
+}
+
+.signup-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+  color: #555;
+}
+
+.signup-text a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+
+/* ================= register css ===========================*/
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fff;
+  margin-top: 100px;
+}
+
+.register-box {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 30px 40px;
+  width: 500px;
+  text-align: left;
+}
+
+.register-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #333;
+}
+
+.register-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #444;
+}
+
+.register-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.register-btn {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #0069d9;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+  color: #555;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.success-text {
+  color: #28a745; /* ногоон */
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+.error-text {
+  color: #ff4d4f;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 640px) {
+  .login-container,
+  .register-container {
+    padding: 20px 14px;
+  }
+
+  .login-box,
+  .register-box {
+    width: 100%;
+    padding: 24px 18px;
+  }
+
+  .login-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
