@@ -4,7 +4,7 @@ exports.getAllAdmin = async () => {
   const [rows] = await db.promise().query(
     `SELECT 
        o.order_id AS id,
-       o.order_code AS order_code,
+       o.order_id AS order_code,
        o.total_price AS total_amount,
        UPPER(o.order_status) AS status,
        o.created_at,
@@ -31,7 +31,7 @@ exports.getByIdAdmin = async (orderId) => {
     `
     SELECT
       o.order_id AS id,
-      o.order_code AS order_code,
+      o.order_id AS order_code,
       o.total_price AS total_amount,
       UPPER(o.order_status) AS status,
       o.created_at,

@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch, FiRefreshCw, FiFilter, FiArrowUp, FiArrowDown } from "react-icons/fi";
-import "../../styles/admin/admin-orders.css";
 
 const ORDER_STATUSES = [
   { value: "PENDING", label: "Шинэ", className: "badge-warning" },

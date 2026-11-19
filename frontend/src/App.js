@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -19,6 +18,9 @@ import Info from "./pages/user/profile/Info";
 import Orders from "./pages/user/profile/Orders";
 import Favorites from "./pages/user/profile/Favorites";
 import ProfileIndex from "./pages/user/profile/index";
+
+// Admin layout
+import AdminLayout from "./layouts/AdminLayout";
 
 // Admin pages
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -49,26 +51,32 @@ function App() {
             path="/user/login"
             element={<UserLayout><Login /></UserLayout>}
           />
+
           <Route
             path="/user/register"
             element={<UserLayout><Register /></UserLayout>}
           />
+
           <Route
             path="/user/home"
             element={<UserLayout><Home /></UserLayout>}
           />
+
           <Route
             path="/user/cart"
             element={<UserLayout><CartPage /></UserLayout>}
           />
+
           <Route
             path="/user/category/:id"
             element={<UserLayout><CategoryPage /></UserLayout>}
           />
+
           <Route
             path="/user/category/:id/brand/:brandName"
             element={<UserLayout><CategoryPage /></UserLayout>}
           />
+
           <Route
             path="/user/product/:id"
             element={<UserLayout><ProductDetail /></UserLayout>}
@@ -82,22 +90,26 @@ function App() {
             <Route path="favorites" element={<Favorites />} />
           </Route>
 
-          {/* Admin pages */}
-          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+          {/* Admin login - separate from layout */}
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminReports />} />
-          <Route path="/admin/reports" element={<AdminReports />} />
 
-          <Route path="/admin/products" element={<AdminProducts />} />
-          <Route path="/admin/products/new" element={<AdminProductCreate />} />
-          <Route path="/admin/products/:id/edit" element={<AdminProductEdit />} />
+          {/* Admin protected pages */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<AdminReports />} />
+            <Route path="reports" element={<AdminReports />} />
 
-          <Route path="/admin/orders" element={<AdminOrders />} />
-          <Route path="/admin/orders/:id" element={<AdminOrderDetail />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="products/new" element={<AdminProductCreate />} />
+            <Route path="products/:id/edit" element={<AdminProductEdit />} />
 
-          <Route path="/admin/users" element={<AdminUsers />} />
-          <Route path="/admin/users/new" element={<AdminUserCreate />} />
-          <Route path="/admin/users/:id/edit" element={<AdminUserEdit />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="orders/:id" element={<AdminOrderDetail />} />
+
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="users/new" element={<AdminUserCreate />} />
+            <Route path="users/:id/edit" element={<AdminUserEdit />} />
+          </Route>
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
@@ -108,4 +120,3 @@ function App() {
 }
 
 export default App;
-

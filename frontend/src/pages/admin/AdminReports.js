@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/admin/admin-reports.css";
 
 const STATUS_LABELS = {
   PENDING: "Шинэ",

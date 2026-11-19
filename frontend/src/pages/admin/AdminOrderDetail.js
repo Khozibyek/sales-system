@@ -10,8 +10,6 @@ import {
   FiCreditCard,
   FiPackage,
 } from "react-icons/fi";
-import "../../styles/admin/admin-orders.css";
-import "../../styles/admin/admin-order-detail.css";
 
 const ORDER_STATUSES = [
   { value: "PENDING", label: "Шинэ" },
