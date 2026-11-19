@@ -31,7 +31,7 @@ export default function CartPage() {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5050/api/cart/${userId}`)
+      .get(`/api/cart/${userId}`)
       .then((res) => setCart(res.data))
       .catch((err) => console.error("Cart fetch error:", err));
   }, [userId]);
@@ -40,7 +40,7 @@ export default function CartPage() {
   useEffect(() => {
     const fetchAddress = async () => {
       try {
-        const res = await axios.get(`http://localhost:5050/api/address/full/${userId}`);
+        const res = await axios.get(`/api/address/full/${userId}`);
         const { addressData, userAddress, phone, found } = res.data;
 
         setAddressData(addressData || {});
@@ -90,7 +90,7 @@ export default function CartPage() {
   // 🗑 Сагс устгах
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5050/api/cart/delete/${id}`);
+      await axios.delete(`/api/cart/delete/${id}`);
       setCart((prev) => prev.filter((item) => item.cart_id !== id));
       toast.success("Амжилттай устгагдлаа");
     } catch (err) {
@@ -113,7 +113,7 @@ export default function CartPage() {
   const handleClear = async (showToast = true) => {
     try {
       for (const item of cart) {
-        await axios.delete(`http://localhost:5050/api/cart/delete/${item.cart_id}`);
+        await axios.delete(`/api/cart/delete/${item.cart_id}`);
       }
       setCart([]);
       if (showToast) toast.success("Сагс хоослогдлоо");
@@ -148,7 +148,7 @@ export default function CartPage() {
   // Хаяг хадгалаад захиалга үүсгэх
   const handlePayAndSaveAddress = async () => {
     try {
-      const res = await axios.post("http://localhost:5050/api/address/upsert", {
+      const res = await axios.post("/api/address/upsert", {
         user_id: userId,
         city: selectedProvince,
         district: selectedDistrict,
@@ -159,7 +159,7 @@ export default function CartPage() {
 
       const addressId = res.data.address_id;
 
-      await axios.post("http://localhost:5050/api/orders/create", {
+      await axios.post("/api/orders/create", {
         user_id: userId,
         address_id: addressId,
         total_price: totalPrice,
@@ -238,7 +238,7 @@ export default function CartPage() {
                         ) : null}
 
                         <img
-                          src={`http://localhost:5050/${item.main_image}`}
+                          src={`/${item.main_image}`}
                           alt={item.name}
                           className="cart-img"
                           onClick={() => navigate(`/user/product/${item.product_id}`)}

@@ -22,7 +22,7 @@ const AdminLogin = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5050/admin/login", {
+      const response = await axios.post("/admin/login", {
         email,
         password,
       });

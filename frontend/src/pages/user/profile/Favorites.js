@@ -12,7 +12,7 @@ export default function Favorites() {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5050/api/favorites/user/${userId}`)
+      .get(`/api/favorites/user/${userId}`)
       .then((res) => setFavorites(res.data))
       .catch((err) => console.error("Дуртай бараа татах алдаа:", err))
       .finally(() => setLoading(false));
@@ -20,7 +20,7 @@ export default function Favorites() {
 
   const handleRemoveFavorite = async (productId) => {
     try {
-      await axios.post("http://localhost:5050/api/favorites/toggle", {
+      await axios.post("/api/favorites/toggle", {
         user_id: userId,
         product_id: productId,
       });
@@ -50,7 +50,7 @@ export default function Favorites() {
             <div className="fav-img-wrap">
               {item.main_image ? (
                 <img
-                  src={`http://localhost:5050/${item.main_image.replace(/^\/+/, "")}`}
+                  src={`/${item.main_image.replace(/^\/+/, "")}`}
                   alt={item.name}
                   className="fav-img"
                   onClick={() => navigate(`/user/product/${item.id}`)}

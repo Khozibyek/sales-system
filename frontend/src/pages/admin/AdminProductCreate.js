@@ -138,7 +138,7 @@ const AdminProductCreate = () => {
       return path;
     }
     const normalized = path.replace(/^\/+/, "").replace(/\\/g, "/");
-    return `http://localhost:5050/${normalized}`;
+    return `/${normalized}`;
   };
 
   const sendOptionRequest = async (endpoint, payload) => {
@@ -148,7 +148,7 @@ const AdminProductCreate = () => {
       throw new Error("Админ эрх шаардлагатай.");
     }
 
-    const response = await fetch(`http://localhost:5050/admin/products/${endpoint}`, {
+    const response = await fetch(`/admin/products/${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -311,7 +311,7 @@ const AdminProductCreate = () => {
 
     setLoading(true);
 
-    fetch("http://localhost:5050/admin/products/options", {
+    fetch("/admin/products/options", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -382,7 +382,7 @@ const AdminProductCreate = () => {
     formData.append("image", file);
 
     try {
-      const res = await fetch("http://localhost:5050/api/admin/upload/image", {
+      const res = await fetch("/api/admin/upload/image", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -426,7 +426,7 @@ const AdminProductCreate = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5050/api/admin/upload/delete", {
+      const res = await fetch("/api/admin/upload/delete", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -516,7 +516,7 @@ const AdminProductCreate = () => {
         value: spec.value.trim(),
       }));
 
-    fetch("http://localhost:5050/admin/products", {
+    fetch("/admin/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

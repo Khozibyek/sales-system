@@ -34,7 +34,7 @@ export default function CategoryPage() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5050/api/favorites/toggle", {
+      const res = await axios.post("/api/favorites/toggle", {
         user_id: userId,
         product_id: productId,
       });
@@ -58,7 +58,7 @@ export default function CategoryPage() {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5050/api/favorites/user/${userId}`)
+      .get(`/api/favorites/user/${userId}`)
       .then((res) => {
         const favs = {};
         res.data.forEach((item) => {
@@ -73,7 +73,7 @@ export default function CategoryPage() {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5050/api/cart/${userId}`)
+      .get(`/api/cart/${userId}`)
       .then((res) => setCartItems(res.data))
       .catch((err) => console.error("Cart fetch error:", err));
   }, [userId]);
@@ -81,7 +81,7 @@ export default function CategoryPage() {
   // 📦 Ангиллын бараанууд татах
   useEffect(() => {
     axios
-      .get(`http://localhost:5050/api/products/category/${id}`)
+      .get(`/api/products/category/${id}`)
       .then((res) => {
         const data = res.data.products;
         setCategoryName(res.data.category);
@@ -134,7 +134,7 @@ export default function CategoryPage() {
   }
 
     try {
-      await axios.post("http://localhost:5050/api/cart/add", {
+      await axios.post("/api/cart/add", {
         user_id: userId,
         product_id: product.id,
         quantity: 1,
@@ -215,7 +215,7 @@ export default function CategoryPage() {
                   <div className="category-product-image-wrapper">
                     <div className="badge-container">{badges}</div>
                     <img
-                      src={`http://localhost:5050/${p.main_image}`}
+                      src={`/${p.main_image}`}
                       alt={p.name}
                       className="category-product-image"
                       onClick={() => navigate(`/user/product/${p.id}`)}

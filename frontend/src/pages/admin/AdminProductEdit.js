@@ -38,7 +38,7 @@ const AdminProductEdit = () => {
 
     setLoading(true);
 
-    const fetchOptions = fetch("http://localhost:5050/admin/products/options", {
+    const fetchOptions = fetch("/admin/products/options", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -49,7 +49,7 @@ const AdminProductEdit = () => {
       return response.json();
     });
 
-    const fetchProduct = fetch(`http://localhost:5050/admin/products/${id}`, {
+    const fetchProduct = fetch(`/admin/products/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -215,7 +215,7 @@ const AdminProductEdit = () => {
       return path;
     }
     const normalized = path.replace(/^\/+/, "").replace(/\\/g, "/");
-    return `http://localhost:5050/${normalized}`;
+    return `/${normalized}`;
   };
 
   const handleChange = (event) => {
@@ -289,7 +289,7 @@ const handleAddImage = async (event) => {
   formData.append("product_id", id);
 
   try {
-    const res = await fetch("http://localhost:5050/api/admin/upload/image", {
+    const res = await fetch("/api/admin/upload/image", {
       method: "POST",
       body: formData,
     });
@@ -317,7 +317,7 @@ const handleRemoveImage = async (index) => {
   const productId = id; // тухайн бүтээгдэхүүний id
 
   try {
-    const res = await fetch("http://localhost:5050/api/admin/upload/delete", {
+    const res = await fetch("/api/admin/upload/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ product_id: productId, image_url: imageUrl }),
@@ -374,7 +374,7 @@ const handleRemoveImage = async (index) => {
         value: spec.value.trim(),
       }));
 
-    fetch(`http://localhost:5050/admin/products/${id}`, {
+    fetch(`/admin/products/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

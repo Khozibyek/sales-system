@@ -47,7 +47,7 @@ const AdminOrders = () => {
     }
 
     setLoading(true);
-    fetch("http://localhost:5050/admin/orders", {
+    fetch("/admin/orders", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -112,7 +112,7 @@ const AdminOrders = () => {
     }
 
     setUpdatingStatusId(orderId);
-    fetch(`http://localhost:5050/admin/orders/${orderId}/status`, {
+    fetch(`/admin/orders/${orderId}/status`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

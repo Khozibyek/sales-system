@@ -29,7 +29,7 @@ export default function ProductDetail() {
     }
 
     try {
-      await axios.post("http://localhost:5050/api/cart/add", {
+      await axios.post("/api/cart/add", {
         user_id: userId,
         product_id: product.id,
         quantity,
@@ -52,7 +52,7 @@ export default function ProductDetail() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5050/api/favorites/toggle", {
+      const res = await axios.post("/api/favorites/toggle", {
         user_id: userId,
         product_id: productId,
       });
@@ -76,7 +76,7 @@ export default function ProductDetail() {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5050/api/favorites/user/${userId}`)
+      .get(`/api/favorites/user/${userId}`)
       .then((res) => {
         const favs = {};
         res.data.forEach((item) => {
@@ -101,7 +101,7 @@ export default function ProductDetail() {
 
     try {
       //  Сагсанд тухайн бараа байгаа эсэхийг шалгах
-      const check = await axios.get(`http://localhost:5050/api/cart/${userId}`);
+      const check = await axios.get(`/api/cart/${userId}`);
       const exists = check.data.some((item) => item.product_id === product.id);
 
       if (exists) {
@@ -110,7 +110,7 @@ export default function ProductDetail() {
       }
 
       //  Хэрвээ байхгүй бол шинээр нэмэх
-      await axios.post("http://localhost:5050/api/cart/add", {
+      await axios.post("/api/cart/add", {
         user_id: userId,
         product_id: product.id,
         quantity,
@@ -127,7 +127,7 @@ export default function ProductDetail() {
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`http://localhost:5050/api/products/${id}`)
+      .get(`/api/products/${id}`)
       .then((res) => {
         const productData = res.data;
         setProduct(productData);
@@ -178,7 +178,7 @@ export default function ProductDetail() {
                     img.trim() !== "" && (
                       <img
                         key={i}
-                        src={`http://localhost:5050/${img}`}
+                        src={`/${img}`}
                         onClick={() => setSelectedImage(img)}
                         className={selectedImage === img ? "active" : ""}
                         alt={`${product.name} ${i + 1}`}
@@ -189,7 +189,7 @@ export default function ProductDetail() {
                 : product.image &&
                 product.image.trim() !== "" && (
                   <img
-                    src={`http://localhost:5050/${product.image}`}
+                    src={`/${product.image}`}
                     onClick={() => setSelectedImage(product.image)}
                     alt={product.name}
                     onError={(e) => (e.target.style.display = "none")}
@@ -200,7 +200,7 @@ export default function ProductDetail() {
             {/* --- Main зураг --- */}
             <div className="main-image">
               <img
-                src={`http://localhost:5050/${selectedImage || product.images?.[0]
+                src={`/${selectedImage || product.images?.[0]
                   }`}
                 alt={product.name}
               />

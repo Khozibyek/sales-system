@@ -21,7 +21,7 @@ function Login() {
     setErrors({});
 
     try {
-      const res = await axios.post("http://localhost:5050/user/login", form);
+      const res = await axios.post("/user/login", form);
 
       // Token хадгалах
       localStorage.setItem("token", res.data.token);

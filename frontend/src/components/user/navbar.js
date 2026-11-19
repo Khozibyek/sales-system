@@ -22,7 +22,7 @@ function NavbarUser() {
   // Категори ба нэвтрэлт шалгах
   useEffect(() => {
     axios
-      .get("http://localhost:5050/api/products/categories")
+      .get("/api/products/categories")
       .then((res) => setCategories(res.data))
       .catch((err) => console.error("Category fetch error:", err));
 
@@ -81,7 +81,7 @@ function NavbarUser() {
     if (allProducts.length) return;
     setSearchLoading(true);
     try {
-      const res = await axios.get("http://localhost:5050/api/products");
+      const res = await axios.get("/api/products");
       setAllProducts(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Product fetch for search failed:", err);

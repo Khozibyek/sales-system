@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5050/api/products")
+      .get("/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -90,7 +90,7 @@ function Home() {
       {/* Banner — хэвээр */}
       <div className="banner">
         <img
-          src="http://localhost:5050/uploads/banner.png"
+          src="/uploads/banner.png"
           alt="Main Banner"
         />
       </div>
@@ -130,7 +130,7 @@ function Home() {
                 <img
                   src={
                     p.main_image
-                      ? `http://localhost:5050/${p.main_image}`
+                      ? `/${p.main_image}`
                       : "/no-image.jpg"
                   }
                   alt={p.name}

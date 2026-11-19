@@ -16,7 +16,7 @@ const AdminUsers = () => {
       return;
     }
 
-    fetch("http://localhost:5050/admin/users", {
+    fetch("/admin/users", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -53,7 +53,7 @@ const AdminUsers = () => {
     }
 
     setDeletingId(user.id);
-    fetch(`http://localhost:5050/admin/users/${user.id}`, {
+    fetch(`/admin/users/${user.id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -94,7 +94,7 @@ const AdminUsers = () => {
 
     setTogglingId(user.id);
 
-    fetch(`http://localhost:5050/admin/users/${user.id}/status`, {
+    fetch(`/admin/users/${user.id}/status`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

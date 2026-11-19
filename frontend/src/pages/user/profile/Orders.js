@@ -16,7 +16,7 @@ export default function Orders() {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5050/api/orders/user/${userId}/with-items`)
+      .get(`/api/orders/user/${userId}/with-items`)
       .then((res) => setOrders(res.data))
       .catch((err) => console.error("Захиалга татах алдаа:", err))
       .finally(() => setLoading(false));
@@ -54,7 +54,7 @@ export default function Orders() {
               {order.items.map((it) => (
                 <div className="order-item" key={it.item_id}>
                   <img
-                    src={`http://localhost:5050/${it.image?.replace(/^\/+/, "")}`}
+                    src={`/${it.image?.replace(/^\/+/, "")}`}
                     alt={it.name}
                     className="order-img"
                   />

@@ -36,7 +36,7 @@ const Register = () => {
     setErrors({});
 
     try {
-      const res = await axios.post("http://localhost:5050/user/register", form);
+      const res = await axios.post("/user/register", form);
       toast.success(res.data.message || "Амжилттай бүртгүүллээ!");
       navigate("/user/login");
       setForm({

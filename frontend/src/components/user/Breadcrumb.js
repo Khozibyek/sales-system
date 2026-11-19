@@ -29,7 +29,7 @@ const Breadcrumb = () => {
   useEffect(() => {
     if (!categoryId) return;
     axios
-      .get(`http://localhost:5050/api/products/category/${categoryId}`)
+      .get(`/api/products/category/${categoryId}`)
       .then((res) => setCategoryName(res.data.category))
       .catch(() => setCategoryName(""));
   }, [categoryId]);

@@ -30,10 +30,10 @@ const AdminReports = () => {
 
     setLoading(true);
     Promise.all([
-      fetch("http://localhost:5050/admin/dashboard/overview", {
+      fetch("/admin/dashboard/overview", {
         headers: { Authorization: `Bearer ${token}` },
       }).then((res) => res.json()),
-      fetch("http://localhost:5050/admin/orders", {
+      fetch("/admin/orders", {
         headers: { Authorization: `Bearer ${token}` },
       }).then((res) => res.json()),
     ])

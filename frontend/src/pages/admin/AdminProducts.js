@@ -21,7 +21,7 @@ const AdminProducts = () => {
       return path;
     }
     const normalized = path.replace(/^\/+/, "").replace(/\\/g, "/");
-    return `http://localhost:5050/${normalized}`;
+    return `/${normalized}`;
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const AdminProducts = () => {
       return;
     }
 
-    fetch("http://localhost:5050/admin/products", {
+    fetch("/admin/products", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -69,7 +69,7 @@ const AdminProducts = () => {
 
     setDeletingId(product.id);
 
-    fetch(`http://localhost:5050/admin/products/${product.id}`, {
+    fetch(`/admin/products/${product.id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ const AdminProducts = () => {
     setModalLoading(true);
     setModalError("");
 
-    fetch(`http://localhost:5050/admin/products/${product.id}`, {
+    fetch(`/admin/products/${product.id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

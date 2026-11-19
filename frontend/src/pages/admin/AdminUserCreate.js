@@ -36,7 +36,7 @@ const AdminUserCreate = () => {
     setSubmitting(true);
     setError("");
 
-    fetch("http://localhost:5050/admin/users", {
+    fetch("/admin/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

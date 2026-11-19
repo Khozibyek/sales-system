@@ -26,7 +26,7 @@ const AdminUserEdit = () => {
       return;
     }
 
-    fetch(`http://localhost:5050/admin/users/${id}`, {
+    fetch(`/admin/users/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -59,7 +59,7 @@ const AdminUserEdit = () => {
       })
       .finally(() => setLoading(false));
 
-    fetch(`http://localhost:5050/admin/users/${id}/address`, {
+    fetch(`/admin/users/${id}/address`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -158,7 +158,7 @@ const AdminUserEdit = () => {
       addressForm.addressDetail ||
       addressForm.altPhone;
 
-    fetch(`http://localhost:5050/admin/users/${id}`, {
+    fetch(`/admin/users/${id}`, {
       method: "PUT",
       headers,
       body: JSON.stringify(userPayload),
@@ -180,7 +180,7 @@ const AdminUserEdit = () => {
           throw new Error("Хот, дүүрэг, хороо талбаруудыг сонгоно уу.");
         }
 
-        return fetch(`http://localhost:5050/admin/users/${id}/address`, {
+        return fetch(`/admin/users/${id}/address`, {
           method: "PUT",
           headers,
           body: JSON.stringify({
